@@ -3,7 +3,7 @@ My Scheme(R5RS) interpreter written in Haskell
 
 ## Interpreter.hs
 
-    ~/Simply-Typed-Lambda> ghci
+    ~/Scheme> ghci
     GHCi, version 7.8.3: http://www.haskell.org/ghc/  :? for help
     Loading package ghc-prim ... linking ... done.
     Loading package integer-gmp ... linking ... done.
