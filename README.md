@@ -1,15 +1,12 @@
 # Scheme
 My Scheme(R5RS) interpreter written in Haskell
 
+    .../Scheme$ sudo stack build
+
 ## Interpreter.hs
 
-    ~/Scheme> ghci
-    GHCi, version 7.8.3: http://www.haskell.org/ghc/  :? for help
-    Loading package ghc-prim ... linking ... done.
-    Loading package integer-gmp ... linking ... done.
-    Loading package base ... linking ... done.
-    Prelude> :l Interpreter.hs
-    *Main> run
+    .../Scheme$ stack runghc app/Interpreter.hs
+    Scheme> 
     Scheme> 
     "hello, world"
     => "hello, world"
@@ -49,9 +46,8 @@ My Scheme(R5RS) interpreter written in Haskell
 
 ## FileInterpreter.hs
 
-    Prelude> :l FileInterpreter.hs
-    *Main> run
-    Files in 'Start'.
+    .../Scheme$ stack runghc app/FileInterpreter.hs
+    Scheme Files in 'Start'.
     Input number or command; 'list', 'up' or 're-eval' (abbr. ':l', ':u', ':r', respectively).
     - 0. ../
     - 1. [Godel]
