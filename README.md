@@ -7,7 +7,6 @@ My Scheme(R5RS) interpreter written in Haskell
 
     .../Scheme$ stack runghc app/Interpreter.hs
     Scheme> 
-    Scheme> 
     "hello, world"
     => "hello, world"
     (+ 1 2)
@@ -21,7 +20,7 @@ My Scheme(R5RS) interpreter written in Haskell
     => 55
     
     (define infinite (lambda (n) (cons n (infinite (+ n 1)))))
-    => inf
+    => infinite
     (car (infinite 1))
     => 1
     (car (cdr (infinite 1)))
