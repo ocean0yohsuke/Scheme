@@ -52,7 +52,7 @@ library
 executable SchemeI-exe
   hs-source-dirs:      app
   main-is:             Interpreter.hs
-  -- ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base >= 4.7 && < 5
                      , deepcontrol >= 0.2 && < 0.3
                      , Scheme

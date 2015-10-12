@@ -27,24 +27,24 @@ prelude2GEnv = M.fromList [
 
 -- let*
 evalLetStar :: Synt
-evalLetStar (CELL pairs sequence _) = do
+evalLetStar (CELL pairs seq _) = do
     let (p,ps) = (L.last pairs, L.init pairs)
-        lastlet = cell (sym "let") (cell (cell p nil) sequence)
+        lastlet = cell (sym "let") (cell (cell p nil) seq)
     letform <- L.foldrM toLetForm lastlet ps
     thisEval letform
   where
-    toLetForm pair@(CELL (SYM name _) (CELL arg NIL _) _) acc = (*:) $ cell (sym "let") (cell (cell pair nil) (cell acc nil))
-    toLetForm e                                           _   = throwEvalError $ strMsg $ "invalid let* form: expected symbol-and-expression pair, but detected "++ show e
+    toLetForm pair@(CELL (SYM _ _) (CELL arg NIL _) _) acc = (*:) $ cell (sym "let") (cell (cell pair nil) (cell acc nil))
+    toLetForm e                                        _   = throwEvalError $ strMsg $ "invalid let* form: expected symbol-and-expression pair, but detected "++ show e
 evalLetStar e = throwEvalError $ INVALIDForm $ show (cell (sym "let*" ) e)
 
 -- letrec
 evalLetRec :: Synt
-evalLetRec c@(CELL pairs seq _) = do
-    seqM define pairs
+evalLetRec (CELL pairs seq _) = do
+    _ <- seqM define pairs
     seqM thisEval seq
   where 
     define :: Expr -> Scm ReturnE
-    define p@(CELL (SYM name _) (CELL arg NIL _) _) = do
+    define p@(CELL (SYM name _) (CELL _ NIL _) _) = do
         isDefined <- evalDefined $ cell (STR name) nil
         if isDefined == true
         then evalSet p
@@ -62,7 +62,7 @@ evalAppend c = (*:) $ L.foldl L.append NIL c
   
 -- length
 evalLength :: AFunc
-evalLength c@(CELL xs NIL _) = (*:) $ INT $ toInteger (L.length xs)
+evalLength (CELL xs NIL _) = (*:) $ INT $ toInteger (L.length xs)
 evalLength e = throwEvalError $ INVALIDForm $ show (cell (sym "length") e)  
 
 --------------------------------------------------
