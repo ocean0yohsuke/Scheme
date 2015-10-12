@@ -1,7 +1,7 @@
 # Scheme
 My Scheme(R5RS) interpreter written in Haskell
 
-    .../Scheme$ sudo stack build
+    .../Scheme$ stack build
 
 ## Interpreter.hs
 

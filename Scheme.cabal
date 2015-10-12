@@ -48,7 +48,7 @@ library
                      , Util.FileSystem
                      , Util.LISP
   build-depends:       base >= 4.7 && < 5
-                     , deepcontrol
+                     , deepcontrol >= 0.1 && < 0.2
                      , mtl
                      , containers
                      , parsec
@@ -56,24 +56,24 @@ library
                      , time
   default-language:    Haskell2010                 
 
-executable SchemeFI-exe
-  hs-source-dirs:      app
-  main-is:             FileInterpreter.hs
-  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
-  build-depends:       base
-                     , deepcontrol
-                     , Scheme
-                     , directory
-                     , filepath
-  default-language:    Haskell2010
 executable SchemeI-exe
   hs-source-dirs:      app
   main-is:             Interpreter.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
-                     , deepcontrol
+                     , deepcontrol >= 0.1 && < 0.2
                      , Scheme
  default-language:    Haskell2010
+executable SchemeFI-exe
+  hs-source-dirs:      app
+  main-is:             FileInterpreter.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , deepcontrol >= 0.1 && < 0.2
+                     , Scheme
+                     , directory
+                     , filepath
+  default-language:    Haskell2010
 
 Test-Suite doctest
   Type:                 exitcode-stdio-1.0
@@ -93,7 +93,7 @@ Test-Suite UnitTest
   Main-Is:              UnitTest.hs
   Build-Depends:        base
                       , HUnit
-                      , deepcontrol
+                      , deepcontrol >= 0.1 && < 0.2
                       , Scheme
                       , parsec
 
