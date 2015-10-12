@@ -8,8 +8,8 @@ import Scheme.Action (loadSchemeCodes, printStackTrace, refreshStackTrace)
 import DeepControl.Applicative
 import DeepControl.Monad
 import DeepControl.Arrow
-import MonadX.MonadTrans
-import MonadX.Monad.RWS
+import DeepControl.MonadTrans
+import DeepControl.Monad.RWS
 import Util.FileSystem
 
 import System.IO

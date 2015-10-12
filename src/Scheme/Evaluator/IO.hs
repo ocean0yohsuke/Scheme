@@ -1,5 +1,7 @@
 module Scheme.Evaluator.IO where
 
+import DeepControl.MonadTrans (liftIO)
+
 import Scheme.Parser (readSchemeCode)
 import Scheme.Evaluator.Micro
 import Scheme.DataType.Error.Eval
@@ -7,7 +9,6 @@ import Scheme.LISP as L
 
 import qualified Prelude as P (foldr, foldl, length, mapM, zip)
 import Prelude hiding (foldr, foldl, length, mapM, zip)
-
 import Data.List
 import qualified Data.Map as M
 import System.IO

@@ -19,10 +19,10 @@ module MonadX.Monad.Reference (
 
 import DeepControl.Applicative
 import DeepControl.Monad
-import DeepControl.Monad.State
-import MonadX.Monad.State hiding (liftCatch)
-import MonadX.MonadTrans
+import DeepControl.Monad.State hiding (liftCatch)
+import DeepControl.MonadTrans
 
+import Control.Monad.Signatures
 import qualified Data.Map as M
 
 --------------------------------------------------------------------------

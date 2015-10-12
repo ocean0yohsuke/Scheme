@@ -9,8 +9,8 @@ import Scheme.Parser
 
 import DeepControl.Applicative
 import DeepControl.Monad
-import MonadX.MonadTrans
-import MonadX.Monad.Error
+import DeepControl.MonadTrans
+import DeepControl.Monad.Except
 
 import Data.List (intersperse)
 import System.IO 

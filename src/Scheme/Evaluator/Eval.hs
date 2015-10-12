@@ -6,8 +6,8 @@ module Scheme.Evaluator.Eval (
     module Scheme.Util,
     module DeepControl.Applicative,
     module DeepControl.Monad,
-    module MonadX.Monad.RWS,
-    module MonadX.Monad.Error,
+    module DeepControl.Monad.RWS,
+    module DeepControl.Monad.Except,
     module MonadX.Monad.Reference,
 
     eval, evalMacro,
@@ -30,8 +30,8 @@ import Scheme.Action
 import Scheme.Util
 import DeepControl.Applicative
 import DeepControl.Monad hiding (void)
-import MonadX.Monad.RWS hiding (liftCatch)
-import MonadX.Monad.Error hiding (liftCatch)
+import DeepControl.Monad.RWS hiding (liftCatch)
+import DeepControl.Monad.Except hiding (liftCatch)
 import MonadX.Monad.Reference hiding (liftCatch)
 
 import qualified Data.Map as M

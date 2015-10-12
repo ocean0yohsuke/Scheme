@@ -9,9 +9,10 @@ import Scheme.Util
 
 import DeepControl.Applicative
 import DeepControl.Monad
-import MonadX.Monad.Error -- hiding (liftCatch)
+import DeepControl.Monad.Except -- hiding (liftCatch)
+import DeepControl.Monad.RWS
 import MonadX.Monad.Reference
-import MonadX.Monad.RWS
+import DeepControl.MonadTrans
 
 -- for debug
 import Debug.Trace
@@ -32,7 +33,7 @@ getScmRef = trans $ get
 askScmEnv :: Scm ScmEnv
 askScmEnv = trans . trans $ ask
 localScm :: (ScmEnv -> ScmEnv) -> Scm a -> Scm a 
-localScm f = mapErrorT . mapReferenceT $ local f  -- TODO: 
+localScm f = mapExceptT . mapReferenceT $ local f  -- TODO: 
 
 --
 -- MonadState

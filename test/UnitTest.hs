@@ -5,23 +5,19 @@ import Scheme.Evaluator
 import Scheme.Action.Command (catchVoid)
 import Scheme.DataType.Value
 import Scheme.DataType (Expr)
-import qualified Scheme.DataType
 import Scheme.Parser
 import qualified Scheme.LISP as L
 
-import Text.ParserCombinators.Parsec
-
 import DeepControl.Applicative
 import DeepControl.Monad
-import MonadX.Monad.RWS
-import MonadX.Monad.Error
 
 import System.IO.Unsafe (unsafePerformIO)
 
 main :: IO ()
 main = run >> return ()
 
--- | Run Unit-Test of this module. 
+-- | Run Unit-Test of this module.
+-- run :: 
 run = runTestTT $ TestList 
         [ 
           TestList testCase_Scheme_show

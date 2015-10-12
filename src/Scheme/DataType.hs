@@ -28,9 +28,9 @@ import Scheme.DataType.Misc
 
 import DeepControl.Applicative
 import DeepControl.Monad
-import MonadX.MonadTrans
-import MonadX.Monad.RWS
-import MonadX.Monad.Error
+import DeepControl.MonadTrans
+import DeepControl.Monad.RWS
+import DeepControl.Monad.Except
 import MonadX.Monad.Reference
 
 import qualified Data.Map as M
@@ -42,7 +42,7 @@ type Name = String
 -- Scm
 ----------------------------------------------------------------------------------------------------------------
 
-type Scm a = (ErrorT ScmError
+type Scm a = (ExceptT ScmError
              (ReferenceT Var
              (RWST ScmEnv () ScmStates IO))) a
 
@@ -51,7 +51,7 @@ runScm :: Scm a
             -> ScmEnv       -- Reader
             -> ScmStates    -- State
             -> IO ((Either ScmError a, ScmRef), ScmStates, ())
-runScm scm ref env states = scm >- runErrorT
+runScm scm ref env states = scm >- runExceptT
                                 >- (unReferenceT >-> (|>ref))
                                 >- (runRWST >-> (|>env) >-> (|>states)) 
 

@@ -1,6 +1,6 @@
 module Scheme.DataType.Error.Try where
 
-import MonadX.Monad.Error
+import DeepControl.Monad.Except
 
 -- for Chaitin's Omega function
 data TryError = OUTOFDATA

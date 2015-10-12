@@ -1,12 +1,13 @@
 {-# LANGUAGE BangPatterns #-}
 module Scheme.Evaluator.Chaitin where
 
+import DeepControl.MonadTrans (liftIO)
+
 import Scheme.DataType.Error.Eval
 import Scheme.DataType.Error.Try
 import Scheme.Evaluator.Micro
 import Scheme.Parser
 import Util.Bits
-
 import qualified Prelude as P (foldr, filter, length)
 import Prelude hiding (foldr, filter, length)
 import Scheme.LISP as L
@@ -135,6 +136,7 @@ evalTry (CELL times (CELL expr (CELL bin NIL _) _) _) = do
                             then throwTryError OUTOFTIME
                             else (*:) $ cell (sym "failure") (cell (sym "out-of-time") (cell cd nil))
                       PARSEErr _ -> (*:) $ cell (sym "success") (cell (sym "parse-error") (cell cd nil))
+                      -- OTHER str  -> throwTryError $ strMsg $ str
                   -- EvalError
                   EVALErr _ err' -> (*:) $ cell (sym "success") (cell (cell (sym (show err')) nil) (cell cd nil))
                   err'           -> (*:) $ cell (sym "success") (cell (cell (sym (show err')) nil) (cell cd nil))

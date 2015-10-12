@@ -1,6 +1,6 @@
 module Scheme.DataType.Error.Eval where
 
-import MonadX.Monad.Error
+import DeepControl.Monad.Except
 
 data EvalError = VOIDErr
                | MULTDecl String     -- multiple declaration

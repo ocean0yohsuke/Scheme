@@ -1,7 +1,6 @@
 module Scheme.Evaluator.Prelude2 where
 
 import Scheme.Evaluator.Micro
-import Scheme.Evaluator.Prelude
 import Scheme.DataType.Error.Eval
 import Scheme.LISP as L
 
@@ -28,9 +27,9 @@ prelude2GEnv = M.fromList [
 
 -- let*
 evalLetStar :: Synt
-evalLetStar c@(CELL pairs seq _) = do
+evalLetStar (CELL pairs sequence _) = do
     let (p,ps) = (L.last pairs, L.init pairs)
-        lastlet = cell (sym "let") (cell (cell p nil) seq)
+        lastlet = cell (sym "let") (cell (cell p nil) sequence)
     letform <- L.foldrM toLetForm lastlet ps
     thisEval letform
   where
